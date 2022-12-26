@@ -30,3 +30,4 @@ local Locations = {
     }
 }
 return Locations
+
