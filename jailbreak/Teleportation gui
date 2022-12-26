@@ -12,7 +12,7 @@ local function Notify(title, des)
     })
 end
 local TeleportLocations = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20locations"))()
-if game.PlaceId == 606849621 then
+if game.PlaceId ~= 606849621 then
   Notify("Warning", "this script is recomended to be used on jailbreak only!")
   wait(2)
 end
@@ -22,7 +22,6 @@ CreateMenu("Main tps")
 CreateSearchBar("Main tps")
 CreateMenu("Player tps") -- done
 CreateSearchBar("Player tps") -- done
-
 for i,v in pairs(TeleportLocations.Tps) do
   CreateRegButton(i, "Main tps", function()
     local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
