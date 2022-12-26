@@ -23,7 +23,7 @@ CreateSearchBar("Main tps")
 CreateMenu("Player tps") -- done
 CreateSearchBar("Player tps") -- done
 
-for i,v in pairs(TeleportLocations) do
+for i,v in pairs(TeleportLocations.Tps) do
   CreateRegButton(i, "Main tps", function()
     local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
     local frame = v
