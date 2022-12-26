@@ -63,7 +63,7 @@ for i,v in pairs(TeleportLocations.Tps) do
   CreateRegButton(i, "Main tps", function()
     local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
     local frame = v
-    tp(frame)
+    tp(frame, tpspeed)
   end)
 end
 CreateNote("Just input start of user/display", "Player tps")
@@ -72,6 +72,6 @@ CreateSearchButton("Player", "Player tps", function(arg)
   if thing~= nil then
       local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
       local frame = game:GetService('Players')[thing].Character.HumanoidRootPart.CFrame
-      tp(frame)
+      tp(frame, tpspeed)
   end
 end)
