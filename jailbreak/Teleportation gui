@@ -1,1 +1,32 @@
+loadstring(game:HttpGet("https://gist.githubusercontent.com/cyberical9B55/c0572b74c89ba499360d4f2447477505/raw/8e456c2044003b254885c15f81b5bc3972d5f8b4/poopoo"))() -- ui library
+local Arcticv2 = game:GetService("CoreGui"):FindFirstChild("Arcticv2")
+if Arcticv2 then
+  Arcticv2.Name = math.random(456,99999)
+end
+local function Notify(title, des)
+    local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("SendNotification", {
+        Title = title;
+        Text = des;
+        Duration = 2.5;
+    })
+end
+local TeleportLocations = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20locations"))()
+if game.PlaceId == 606849621 then
+  Notify("Warning", "this script is recomended to be used on jailbreak only!")
+  wait(2)
+end
+CreateWindow("Jailbreak-teleport gui")
+--tabs
+CreateMenu("Main tps")
+CreateSearchBar("Main tps")
+CreateMenu("Player tps") -- done
+CreateSearchBar("Player tps") -- done
 
+for i,v in pairs(TeleportLocations) do
+  CreateRegButton(i, "Main tps", function()
+    local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
+    local frame = v
+    tp(frame)
+  end)
+end
