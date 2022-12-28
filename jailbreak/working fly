@@ -39,7 +39,7 @@ end)
 local RunService = game:GetService("RunService")
 RunService.Heartbeat:Connect(function()
 	if flying then
-		local testing = math.random(100, 156)*11
+		local testing = math.random(100, 156) -- pointless?
 		DoIt(testing)
 	else
 		wait(0.25)
