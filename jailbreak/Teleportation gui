@@ -47,7 +47,7 @@ function GetPlayer(String)
 	return Found
 end
 
-CreateWindow("Jailbreak-teleport gui")
+CreateWindow("Jailbreak-teleport gui - vexen")
 --tabs
 CreateMenu("Main tps")
 CreateSearchBar("Main tps")
