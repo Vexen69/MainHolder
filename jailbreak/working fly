@@ -1,0 +1,47 @@
+local function DoIt(idk)
+	local speed = idk or 1.1
+	local UserInputService = game:GetService("UserInputService")			
+	velocity = Vector3.new(0, 1.9, 0)
+	if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * speed)
+	end
+	if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * -speed)
+	end
+	if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * -speed)
+	end
+	if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * speed)
+	end
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+	game.Players.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+end
+local function Notify(title, des)
+    local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("SendNotification", {
+        Title = title;
+        Text = des;
+        Duration = 2.5;
+    })
+end
+
+local key = shared.jailflykey or "x"
+Notify("Jailbreak fly", "Key set to :"..key)
+mouse = game.Players.LocalPlayer:GetMouse()
+local flying = false
+mouse.KeyDown:Connect(function(e)
+	if e == key then
+		flying = not flying
+	end
+end)
+local RunService = game:GetService("RunService")
+RunService.Heartbeat:Connect(function()
+	if flying then
+		local testing = math.random(10, 15)/10
+		DoIt(testing)
+	else
+		wait(0.25)
+	end
+end)
