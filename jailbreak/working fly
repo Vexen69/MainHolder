@@ -1,22 +1,49 @@
+local car = nil
 local function DoIt(idk)
-	local speed = idk or 1.1
-	local UserInputService = game:GetService("UserInputService")			
-	velocity = Vector3.new(0, 1.9, 0)
-	if UserInputService:IsKeyDown(Enum.KeyCode.W) then
-		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * speed)
+	if car then
+		local speed = idk/50 or 2
+		local goto = nil
+		local UserInputService = game:GetService("UserInputService")			
+		if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+			goto = (workspace.CurrentCamera.CoordinateFrame.lookVector*2.75)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+			goto = (workspace.CurrentCamera.CoordinateFrame.rightVector*-2.75)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+			goto = (workspace.CurrentCamera.CoordinateFrame.lookVector*-2.75)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+			goto = (workspace.CurrentCamera.CoordinateFrame.rightVector*2.75)
+		end
+		if goto ~= nil then
+			for i,v in pairs(car:GetDescendants()) do
+				if v:IsA"BasePart" then
+					v.Velocity = Vector3.new(10,10,-10)
+					v.CFrame = v.CFrame + (goto)
+				end
+			end
+		end
+	else
+		local speed = idk or 110
+		local UserInputService = game:GetService("UserInputService")			
+		velocity = Vector3.new(0, 1.9, 0)
+		if UserInputService:IsKeyDown(Enum.KeyCode.W) then
+			velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * speed)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.A) then
+			velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * -speed)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.S) then
+			velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * -speed)
+		end
+		if UserInputService:IsKeyDown(Enum.KeyCode.D) then
+			velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * speed)
+		end
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+		game.Players.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
 	end
-	if UserInputService:IsKeyDown(Enum.KeyCode.A) then
-		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * -speed)
-	end
-	if UserInputService:IsKeyDown(Enum.KeyCode.S) then
-		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.lookVector * -speed)
-	end
-	if UserInputService:IsKeyDown(Enum.KeyCode.D) then
-		velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * speed)
-	end
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
-	game.Players.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
-	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
 end
 local function Notify(title, des)
     local CoreGui = game:GetService("StarterGui")
@@ -45,3 +72,16 @@ RunService.Heartbeat:Connect(function()
 		wait(0.25)
 	end
 end)
+while wait(0.4) do
+	task.spawn(function()
+		car = nil
+		lp = game:service'Players'.LocalPlayer.Character
+		for i,v in pairs(workspace.Vehicles:GetDescendants()) do
+			if v:IsA"StringValue" then
+				if v.Value == game:service'Players'.LocalPlayer.Name then
+					car = v.Parent.Parent
+				end
+			end
+		end
+	end)
+end
