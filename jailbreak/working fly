@@ -20,14 +20,15 @@ local function DoIt(idk)
 			for i,v in pairs(car:GetDescendants()) do
 				if v:IsA"BasePart" then
 					v.Velocity = Vector3.new(1,10,1)
-					v.CFrame = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame + (goto)
+					local c = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame
+					v.CFrame = CFrame.new(c.X, c.Y, c.Z)+goto
 				end
 			end
 		else
 			for i,v in pairs(car:GetDescendants()) do
 				if v:IsA"BasePart" then
 					v.Velocity = Vector3.new(1,10,1)
-					v.CFrame = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame + cframe.new(0, 0.2, 0)
+					v.CFrame = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0, 0.2, 0)
 				end
 			end
 		end
