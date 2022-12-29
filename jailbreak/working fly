@@ -3,6 +3,7 @@ local function DoIt(idk)
 	if car then
 		local speed = idk/50 or 2
 		local goto = nil
+		local vel = Vector3.new(0, 0, 0)
 		local UserInputService = game:GetService("UserInputService")			
 		if UserInputService:IsKeyDown(Enum.KeyCode.W) then
 			goto = (workspace.CurrentCamera.CoordinateFrame.lookVector*2.75)
@@ -19,16 +20,16 @@ local function DoIt(idk)
 		if goto ~= nil then
 			for i,v in pairs(car:GetDescendants()) do
 				if v:IsA"BasePart" then
-					v.Velocity = Vector3.new(1,10,1)
-					local c = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame
-					workspace.Camera.CFrame = CFrame.new(c.X, c.Y, c.Z)+goto
+					vel = vel + (workspace.CurrentCamera.CoordinateFrame.lookVector * 1)
+					v.Velocity = vel
+					v.CFrame = (v.CFrame+goto)
 				end
 			end
 		else
 			for i,v in pairs(car:GetDescendants()) do
 				if v:IsA"BasePart" then
 					v.Velocity = Vector3.new(1,10,1)
-					v.CFrame = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0, 0.2, 0)
+					v.CFrame = v.CFrame
 				end
 			end
 		end
