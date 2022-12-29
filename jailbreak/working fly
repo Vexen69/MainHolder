@@ -19,8 +19,8 @@ local function DoIt(idk)
 		if goto ~= nil then
 			for i,v in pairs(car:GetDescendants()) do
 				if v:IsA"BasePart" then
-					v.Velocity = Vector3.new(10,10,-10)
-					v.CFrame = v.CFrame + (goto)
+					v.Velocity = Vector3.new(1,10,1)
+					v.CFrame = game:service'Players'.LocalPlayer.Character.HumanoidRootPart.CFrame + (goto)
 				end
 			end
 		end
@@ -40,9 +40,9 @@ local function DoIt(idk)
 		if UserInputService:IsKeyDown(Enum.KeyCode.D) then
 			velocity = velocity + (workspace.CurrentCamera.CoordinateFrame.rightVector * speed)
 		end
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
-		game.Players.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+		game:service'Players'.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
+		game:service'Players'.LocalPlayer.Character.Humanoid:ChangeState("Freefall")
+		game:service'Players'.LocalPlayer.Character.HumanoidRootPart.Velocity = velocity
 	end
 end
 local function Notify(title, des)
