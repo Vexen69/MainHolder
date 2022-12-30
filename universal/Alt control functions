@@ -57,7 +57,7 @@ function Commands:AddCommand(name, whattodo)
             local Speaker = game:service"Players"[user]
             if table.find(Admins, Speaker.Name) then
                 cmd  = string.split(msg," ")
-                if msg == cmd[1] then
+                if name == cmd[1] then
                     whattodo(cmd, msg)
                 end
             end
@@ -67,7 +67,7 @@ function Commands:AddCommand(name, whattodo)
             v.Chatted:Connect(function(msg)
                 if table.find(Admins, v.Name) then
                     cmd = string.split(msg," ")
-                    if msg == cmd[1] then
+                    if name == cmd[1] then
                         whattodo(cmd, msg)
                     end
                 end
@@ -77,7 +77,7 @@ function Commands:AddCommand(name, whattodo)
             v.Chatted:Connect(function(msg)
                 if table.find(Admins, v.Name) then
                     cmd = string.split(msg," ")
-                    if msg == cmd[1] then
+                    if name == cmd[1] then
                         whattodo(cmd, msg)
                     end
                 end
@@ -94,7 +94,7 @@ function Commands:AddMainCommand(name, whattodo)
             local Speaker = game:service"Players"[user]
             if table.find(MainAdmins, Speaker.Name) then
                 cmd = string.split(msg," ")
-                if msg == cmd[1] then
+                if name == cmd[1] then
                     whattodo(cmd, msg)
                 end
             end
@@ -104,7 +104,7 @@ function Commands:AddMainCommand(name, whattodo)
             v.Chatted:Connect(function(msg)
                 if table.find(MainAdmins, v.Name) then
                     cmd = string.split(msg," ")
-                    if msg == cmd[1] then
+                    if name == cmd[1] then
                         whattodo(cmd, msg)
                     end
                 end
@@ -114,7 +114,7 @@ function Commands:AddMainCommand(name, whattodo)
             v.Chatted:Connect(function(msg)
                 if table.find(MainAdmins, v.Name) then
                     cmd = string.split(msg," ")
-                    if msg == cmd[1] then
+                    if name == cmd[1] then
                         whattodo(cmd, msg)
                     end
                 end
@@ -123,3 +123,4 @@ function Commands:AddMainCommand(name, whattodo)
     end
 end
 return Commands
+--starting adding our first
