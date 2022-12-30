@@ -1,0 +1,45 @@
+--basic variables
+local MainAdmins = _G.MainAdmins or {}
+local Admins = {}
+local Commands = {}
+
+--basic functions
+function Commands:GetPlayer(String)
+	local TotalFound = 0
+	local Found = {}
+	local strl = String:lower()
+	if strl == "random" then
+        local player = game:GetService('Players').LocalPlayer
+        local found = nil
+        local things = game.Players:GetChildren()
+        repeat
+            wait()
+            found = things[math.random(1,#things)].Name
+        until found ~= player.Name 
+        Found = found
+	else
+	    for i,v in pairs(game.Players:GetPlayers()) do
+		    if TotalFound == 0 and v.Name:lower():sub(1, #String) == String:lower() or v.DisplayName:lower():sub(1, #String) == String:lower() then
+			    table.insert(Found,v.Name)
+			    TotalFound = 1
+		    end
+	    end
+	    if #Found >0 then
+	        Found = Found[1]
+	   else
+	       Found = nil
+	   end
+    end 
+	return Found
+end
+function Commands:RemoveWhitelist(a)
+    for i,v in pairs(Admins) do -- only checking through basic admins
+        if v == game:GetService("Players")[a].Name then -- finding matching people
+            table.remove(Admins, i) -- removing
+        end
+    end
+end
+function Commands:AddWhitelist(a)
+    table.insert(Admins, a)
+end
+return Commands -- returning
