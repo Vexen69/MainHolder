@@ -35,7 +35,7 @@ function Commands:GetPlayer(String)
 end
 function Commands:RemoveWhitelist(a)
     for i,v in pairs(Admins) do -- only checking through basic admins
-        if v == game:GetService("Players")[a].Name then -- finding matching people
+        if v == game:GetService("Players")[a].Name and not table.find(MainAdmins,game:GetService("Players")[a].Name) then -- finding matching people
             table.remove(Admins, i) -- removing
         end
     end
