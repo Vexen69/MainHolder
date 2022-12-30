@@ -1,6 +1,7 @@
 --basic variables
 local MainAdmins = _G.MainAdmins or {}
-local Admins = {}
+local ChatType = _G.ChatMode or 1
+local Admins = MainAdmins
 local Commands = {}
 
 --basic functions
@@ -47,5 +48,78 @@ function Commands:ListAdmins()
 end
 function Commands:ListMainAdmins()
     return table.unpack(MainAdmins)
+end
+function Commands:AddCommand(name, whattodo)
+    if ChatMode == 1 then
+        game:service"ReplicatedStorage".DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(data) 
+            local user = data.FromSpeaker
+            local msg = data.Message
+            local Speaker = game:service"Players"[user]
+            if table.find(Admins, Speaker.Name) then
+                cmd  = string.split(msg," ")
+                if msg == cmd[1] then
+                    whattodo(cmd, msg)
+                end
+            end
+        end)
+    else
+        for i,v in pairs(game.Players:GetChildren()) do
+            v.Chatted:Connect(function(msg)
+                if table.find(Admins, v.Name) then
+                    cmd = string.split(msg," ")
+                    if msg == cmd[1] then
+                        whattodo(cmd, msg)
+                    end
+                end
+            end	)
+        end
+        game.Players.PlayerAdded:Connect(function(v)
+            v.Chatted:Connect(function(msg)
+                if table.find(Admins, v.Name) then
+                    cmd = string.split(msg," ")
+                    if msg == cmd[1] then
+                        whattodo(cmd, msg)
+                    end
+                end
+            end	)
+        end)
+    end
+end
+
+function Commands:AddMainCommand(name, whattodo)
+    if ChatMode == 1 then
+        game:service"ReplicatedStorage".DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(data) 
+            local user = data.FromSpeaker
+            local msg = data.Message
+            local Speaker = game:service"Players"[user]
+            if table.find(MainAdmins, Speaker.Name) then
+                cmd = string.split(msg," ")
+                if msg == cmd[1] then
+                    whattodo(cmd, msg)
+                end
+            end
+        end)
+    else
+        for i,v in pairs(game.Players:GetChildren()) do
+            v.Chatted:Connect(function(msg)
+                if table.find(MainAdmins, v.Name) then
+                    cmd = string.split(msg," ")
+                    if msg == cmd[1] then
+                        whattodo(cmd, msg)
+                    end
+                end
+            end	)
+        end
+        game.Players.PlayerAdded:Connect(function(v)
+            v.Chatted:Connect(function(msg)
+                if table.find(MainAdmins, v.Name) then
+                    cmd = string.split(msg," ")
+                    if msg == cmd[1] then
+                        whattodo(cmd, msg)
+                    end
+                end
+            end	)
+        end)
+    end
 end
 return Commands
