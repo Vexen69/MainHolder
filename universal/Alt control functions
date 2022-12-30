@@ -42,4 +42,10 @@ end
 function Commands:AddWhitelist(a)
     table.insert(Admins, a)
 end
-return Commands -- returning
+function Commands:ListAdmins()
+    return table.unpack(Admins)
+end
+function Commands:ListMainAdmins()
+    return table.unpack(MainAdmins)
+end
+return Commands
