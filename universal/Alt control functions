@@ -58,7 +58,14 @@ function Commands:AddCommand(name, whattodo)
             if table.find(Admins, Speaker.Name) then
                 cmd  = string.split(msg," ")
                 if name == cmd[1] then
-                    whattodo(cmd, msg)
+                    local other = {}
+                    for i,v in pairs(cmd) do
+                        if i ~= 1 then
+                            table.insert(other,v)
+                        end
+                    end
+                    local other = table.concat(, " ") 
+                    whattodo(cmd, msg, other)
                 end
             end
         end)
@@ -68,7 +75,14 @@ function Commands:AddCommand(name, whattodo)
                 if table.find(Admins, v.Name) then
                     cmd = string.split(msg," ")
                     if name == cmd[1] then
-                        whattodo(cmd, msg)
+                        local other = {}
+                        for i,v in pairs(cmd) do
+                            if i ~= 1 then
+                                table.insert(other,v)
+                            end
+                        end
+                        local other = table.concat(, " ") 
+                        whattodo(cmd, msg, other)
                     end
                 end
             end	)
@@ -78,7 +92,14 @@ function Commands:AddCommand(name, whattodo)
                 if table.find(Admins, v.Name) then
                     cmd = string.split(msg," ")
                     if name == cmd[1] then
-                        whattodo(cmd, msg)
+                        local other = {}
+                        for i,v in pairs(cmd) do
+                            if i ~= 1 then
+                                table.insert(other,v)
+                            end
+                        end
+                        local other = table.concat(, " ") 
+                        whattodo(cmd, msg, other)
                     end
                 end
             end	)
@@ -95,7 +116,14 @@ function Commands:AddMainCommand(name, whattodo)
             if table.find(MainAdmins, Speaker.Name) then
                 cmd = string.split(msg," ")
                 if name == cmd[1] then
-                    whattodo(cmd, msg)
+                    local other = {}
+                    for i,v in pairs(cmd) do
+                        if i ~= 1 then
+                            table.insert(other,v)
+                        end
+                    end
+                    local other = table.concat(, " ") 
+                    whattodo(cmd, msg, other)
                 end
             end
         end)
@@ -105,7 +133,14 @@ function Commands:AddMainCommand(name, whattodo)
                 if table.find(MainAdmins, v.Name) then
                     cmd = string.split(msg," ")
                     if name == cmd[1] then
-                        whattodo(cmd, msg)
+                        local other = {}
+                        for i,v in pairs(cmd) do
+                            if i ~= 1 then
+                                table.insert(other,v)
+                            end
+                        end
+                        local other = table.concat(, " ") 
+                        whattodo(cmd, msg, other)
                     end
                 end
             end	)
@@ -115,7 +150,14 @@ function Commands:AddMainCommand(name, whattodo)
                 if table.find(MainAdmins, v.Name) then
                     cmd = string.split(msg," ")
                     if name == cmd[1] then
-                        whattodo(cmd, msg)
+                        local other = {}
+                        for i,v in pairs(cmd) do
+                            if i ~= 1 then
+                                table.insert(other,v)
+                            end
+                        end
+                        local other = table.concat(, " ") 
+                        whattodo(cmd, msg, other)
                     end
                 end
             end	)
@@ -123,4 +165,3 @@ function Commands:AddMainCommand(name, whattodo)
     end
 end
 return Commands
---starting adding our first
