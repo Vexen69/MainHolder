@@ -55,12 +55,14 @@ CreateMenu("Player tps")
 CreateMenu("Settings")
 
 CreateSearchButton("Tp speed (recomended 150)", "Settings", function(arg)
-	 tpspeed = arg
-   Notify("Speed", "changed to "..arg)
+	tpspeed = arg
+	Notify("Speed", "changed to "..arg)
 end)
 
 for i,v in pairs(TeleportLocations.Tps) do
   CreateRegButton(i, "Main tps", function()
+     game:GetService('Players').LocalPlayer.Character.Humanoid.Jump = true
+     wait(0.2)
     local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
     local frame = v
     tp(frame, tpspeed)
@@ -70,6 +72,8 @@ CreateNote("Just input start of user/display", "Player tps")
 CreateSearchButton("Player", "Player tps", function(arg)
   thing = GetPlayer(arg)
   if thing~= nil then
+      game:GetService('Players').LocalPlayer.Character.Humanoid.Jump = true
+      wait(0.2)
       local tp = loadstring(game:HttpGet("https://raw.githubusercontent.com/Vexen69/MainHolder/main/jailbreak/Tp%20handler"))()
       local frame = game:GetService('Players')[thing].Character.HumanoidRootPart.CFrame
       tp(frame, tpspeed)
