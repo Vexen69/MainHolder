@@ -64,8 +64,8 @@ function Commands:AddCommand(name, whattodo)
                             table.insert(other,v)
                         end
                     end
-                    local other = table.concat(, " ") 
-                    whattodo(cmd, msg, other)
+                    local othera = table.concat(other, " ") 
+                    whattodo(cmd, msg, other, othera)
                 end
             end
         end)
@@ -81,8 +81,8 @@ function Commands:AddCommand(name, whattodo)
                                 table.insert(other,v)
                             end
                         end
-                        local other = table.concat(, " ") 
-                        whattodo(cmd, msg, other)
+                        local othera = table.concat(other, " ") 
+                        whattodo(cmd, msg, other, othera)
                     end
                 end
             end	)
@@ -98,8 +98,8 @@ function Commands:AddCommand(name, whattodo)
                                 table.insert(other,v)
                             end
                         end
-                        local other = table.concat(, " ") 
-                        whattodo(cmd, msg, other)
+                        local othera = table.concat(other, " ") 
+                        whattodo(cmd, msg, other, othera)
                     end
                 end
             end	)
@@ -122,8 +122,8 @@ function Commands:AddMainCommand(name, whattodo)
                             table.insert(other,v)
                         end
                     end
-                    local other = table.concat(, " ") 
-                    whattodo(cmd, msg, other)
+                    local othera = table.concat(other, " ") 
+                    whattodo(cmd, msg, other, othera)
                 end
             end
         end)
@@ -139,8 +139,8 @@ function Commands:AddMainCommand(name, whattodo)
                                 table.insert(other,v)
                             end
                         end
-                        local other = table.concat(, " ") 
-                        whattodo(cmd, msg, other)
+                        local othera = table.concat(other, " ") 
+                        whattodo(cmd, msg, other, othera)
                     end
                 end
             end	)
@@ -156,8 +156,8 @@ function Commands:AddMainCommand(name, whattodo)
                                 table.insert(other,v)
                             end
                         end
-                        local other = table.concat(, " ") 
-                        whattodo(cmd, msg, other)
+                        local othera = table.concat(other, " ") 
+                        whattodo(cmd, msg, other, othera)
                     end
                 end
             end	)
