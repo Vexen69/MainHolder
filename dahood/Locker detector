@@ -158,11 +158,44 @@ local lockers = {
 		"myrevaim",
 		"2242508294",
 		"ssed using lock?"
+	},
+	
+	--yukrix957
+	["yukrix957,1"] = {
+		"nukesrage",
+		"2685778454"
+	},
+	["yukrix957,1"] = {
+		"nukesrage",
+		"2685778454",
+		"exposed on yt - yukrix957"
+	},
+	["yukrix957,2"] = {
+		"6RAVE7ARDS",
+		"2292900883",
+		"exposed on yt - yukrix957"
+	},
+	["yukrix957,3"] = {
+		"lurpxinn",
+		"446850732",
+		"exposed on yt - yukrix957 (bro wont give up defending himself)"
+	},
+	["yukrix957,4"] = {
+		"ssmirkoo",
+		"2033752584",
+		"exposed on yt - yukrix957"
+	},
+	["yukrix957,5"] = {
+		"istayfeenin",
+		"1491290464",
+		"exposed on yt - yukrix957"
 	}
 
 }
 
- fisxuser = {
+
+
+fisxuser = { -- old 15x wl?
 1691299369,
 81245498,
 1792039007,
@@ -204,7 +237,7 @@ local Players = game:GetService("Players")
 local locks = 0
 for i,v in pairs(Players:GetChildren()) do
 	for j, k in pairs( fisxuser) do
-		if v.UserId == k then
+		if tonumber(v.UserId) == tonumber(k) then
 			locks = locks+1
 			local CoreGui = game:GetService("StarterGui")
 			CoreGui:SetCore("SendNotification", {
@@ -215,7 +248,7 @@ for i,v in pairs(Players:GetChildren()) do
 		end
 	end
 	for j, k in pairs(lockers) do
-		if v.UserId == k[2] or v.Name == k[1] then
+		if tonumber(v.UserId) == tonumber(k[2]) or v.Name == k[1] then
 			locks = locks+1
 			Notify(k[1], k[3])
 		end
@@ -225,12 +258,12 @@ Notify(locks.." Lockers found!", "YEES OK")
  
 Players.PlayerAdded:Connect(function(player)
 	for j, k in pairs(lockers) do
-		if player.UserId == k[2] or player.Name == k[1] then
+		if tonumber(v.UserId) == tonumber(k[2]) or v.Name == k[1] then
 			Notify(k[1].." Just joined!", k[3])
 		end
 	end
 	for j, k in pairs(fisxuser) do
-		if player.UserId == k then
+		if tonumber(v.UserId) == tonumber(k) then
 			local CoreGui = game:GetService("StarterGui")
 			CoreGui:SetCore("SendNotification", {
 				Title = "Old 15x user (joined)";
